@@ -19,7 +19,7 @@ def get_hit_count():
     while True:
         try:
             return cache.incr('hits')
-        except redis.exceptions.ConnectionError as exc:
+        except redis.excephtions.ConnectionError as exc:
             if retries == 0:
                 raise exc
             retries -= 1
@@ -29,4 +29,4 @@ def get_hit_count():
 @app.route('/')
 def hello():
     count = get_hit_count()
-    return 'Hello World! I have been seen {} times.\n'.format(count)
+    return '<p>Hello Bruh! I have been seen {} times.</p>\n'.format(count)
